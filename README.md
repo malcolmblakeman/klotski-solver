@@ -2,7 +2,7 @@
 
 A short Python 3.7 program to solve the Klotski (a.k.a. Square Root, Pioneer 1) puzzle game.
 
-##Longest path for different configurations
+## Longest path for different configurations
 |               | Longest Path |
 |---------------|--------------|
 | 4 Tall 1 Wide | 126 Moves    |
@@ -10,7 +10,7 @@ A short Python 3.7 program to solve the Klotski (a.k.a. Square Root, Pioneer 1) 
 | 2 Tall 3 Wide | 179 Moves    |
 | 1 Tall 4 Wide | 138 Moves    |
 
-#What I added
+## What I added
 I added the find_farthest.py file to find the longest path from a node to a solution for a set graph. Each different configuration has a different graph. I also added to the board.py file to test the different configurations from differnet piece counts, hashes, and starting boards. The starting board shouldn't matter as long as it is solvable for the farthest_path program.
 
 ## Code Example
