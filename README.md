@@ -1,4 +1,4 @@
-## Klotski Solver
+## Klotski Solver with Longest Path
 
 A short Python 3.7 program to solve the Klotski (a.k.a. Square Root, Pioneer 1) puzzle game.
 
