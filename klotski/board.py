@@ -12,8 +12,8 @@ class Piece:
   def next_pieces(self, squares):
     offsets = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     return [ self._shift(offset)
-             for offset in offsets
-             if self._legal_shift(squares, offset) ]
+            for offset in offsets
+            if self._legal_shift(squares, offset) ]
 
   def _legal_shift(self, squares, offset):
     for occupied_square in self._occupied_squares:
@@ -33,7 +33,7 @@ class Piece:
 
   def _shift(self, offset):
     new_occupied_squares = [ self._shift_square(square, offset)
-                             for square in self._occupied_squares ]
+                            for square in self._occupied_squares ]
     return Piece(self._label, new_occupied_squares)
 
   def _shift_square(self, square, offset):
@@ -55,7 +55,10 @@ class Board:
     return output
 
   def hash_key(self):
-    value_map = { -1: ' ', 0: 'S', 1: 't', 2: 't', 3: 's', 4: 's', 5: 't', 6: 's', 7: 's', 8: 't', 9: 'w'}
+    #value_map = { -1: ' ', 0: 'S', 1: 't', 2: 't', 3: 's', 4: 's', 5: 't', 6: 's', 7: 's', 8: 't', 9: 'w'}
+    #value_map = { -1: ' ', 0: 'S', 1: 't', 2: 't', 3: 's', 4: 'w', 5: 's', 6: 's', 7: 'w', 8: 's', 9: 'w'}
+    #value_map = { -1: ' ', 0: 'S', 1: 't', 2: 't', 3: 't', 4: 'w', 5: 's', 6: 's', 7: 'w', 8: 's', 9: 's'}
+    value_map = { -1: ' ', 0: 'S', 1: 't', 2: 'w', 3: 'w', 4: 'w', 5: 's', 6: 's', 7: 'w', 8: 's', 9: 's'}
     chars = [value_map[s] for s in self._squares]
     return ''.join(chars)
 
@@ -86,18 +89,47 @@ class Board:
 
 
 def initial_board():
+  """
+  first
   squares = [
-    -1,  0,  0, -1,
-     1,  0,  0,  2,
-     1,  3,  4,  2,
-     5,  6,  7,  8,
-     5,  9,  9,  8
+    -1,  3,  4, -1,
+    1,  2,  0,  0,
+    1,  2,  0,  0,
+    5,  6,  7,  8,
+    5,  9,  9,  8
   ]
+  second
+  squares = [
+    1, 0, 0, 2,
+    1, 0, 0, 2,
+    7, 7, 9, 9,
+    3, 4, 4, 8,
+    5, -1, -1, 6
+  ]
+  
+  #third
+  squares = [
+    6, 0, 0, 8,
+    1, 0, 0, 2,
+    1, -1, 3, 2,
+    5, -1, 3, 9,
+    4, 4, 7, 7
+  ]
+  """
+  #fourth
+  squares = [
+    1, 0, 0, 5,
+    1, 0, 0, 6,
+    8, 4, 4, 9,
+    7, 7, 2, 2,
+    -1, 3, 3, -1
+  ]
+ 
   pieces = []
   for label_to_find in range(10):
     occupied_sauares = [ occupied_square
-                         for (occupied_square, label) in enumerate(squares)
-                         if label == label_to_find ]
+                        for (occupied_square, label) in enumerate(squares)
+                        if label == label_to_find ]
     pieces.append(Piece(label_to_find, occupied_sauares))
   return Board(pieces, squares)
 
@@ -108,7 +140,20 @@ _piece_heights = [2, 1, 2, 1, 1]
 _piece_widths = [2, 2, 1, 1, 1]
 
 def number_of_states():
-  remaining_pieces = [1, 1, 4, 4, 2]
+  #board = [e, s, s, e, 
+  #         t, S, S, t
+  #         t, S, S, t
+  #         t, s, s, t
+  #         t, w, w, t ]
+  #remaining_pieces = [1, 1,  4, 4, 2]
+
+  #remaining_pieces = [1, 3, 2, 4, 2]
+  remaining_pieces = [1,4,1,4,2]
+  #possible remaining pieces [1,1,4,4,2] 4 tall 1 wide max length 126
+  #possible remaining pieces [1,3,2,4,2] 2 tall 3 wide max length 178
+  #possible remaining pieces [1,2,3,4,2] 3 tall 2 wide max length 179
+  #possible remaining pieces [1,4,1,4,2] 1 tall 4 wide max length 138
+  #possible remaining pieces [1, 0, 0, 14, 2] 14 singles max length ?
   occupied_squares = [False] * (WIDTH * HEIGHT)
   return _number_of_states(remaining_pieces, occupied_squares, 0, 0)
 
