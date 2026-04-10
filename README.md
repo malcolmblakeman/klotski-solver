@@ -46,6 +46,7 @@ Board layout:
 -1443
 -1677
 ```
+Note: everything below was written by previous contributor, Anthony Schmieder.
 ## Motivation
 
 When I was about 10 years old my grandmother gave me the [Klotski](https://en.wikipedia.org/wiki/Klotski) puzzle game (also called the [Square Root puzzle](http://squarerootgames.com/puzzles.html) and Pioneer 1) as a gift. Twenty years later I had only solved it once. It was time for a new approach.
