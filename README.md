@@ -15,7 +15,7 @@ I added the find_farthest.py file to find the longest path from a node to a solu
 
 ## Code Example
 
-Running it:
+Running main:
 
 ```
 $ python main.py 
@@ -28,6 +28,24 @@ Finished in 8.9454369545 seconds
   65880 board configurations total (39925 unreachable)
 ```
 
+Running find_farthest:
+```
+$ python find_farthest.py
+Building graph...
+Graph: 81340 nodes, 129820 edges
+Took 3.09s
+
+Finding node farthest from any solution...
+Done in 3.00s
+
+Farthest node is 179 moves from a solution.
+Board layout:
+5891
+0021
+0023
+-1443
+-1677
+```
 ## Motivation
 
 When I was about 10 years old my grandmother gave me the [Klotski](https://en.wikipedia.org/wiki/Klotski) puzzle game (also called the [Square Root puzzle](http://squarerootgames.com/puzzles.html) and Pioneer 1) as a gift. Twenty years later I had only solved it once. It was time for a new approach.
